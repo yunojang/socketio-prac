@@ -8,11 +8,26 @@ html(lang="en")
     link(rel="stylesheet" href="https://unpkg.com/mvp.css")
   body
     header.greeting
-      h1 Welcome to Chat
-    main.room
-      form.room-form
-        input.name(placeholder='Room name')
-        button Enter
-      ul.room-list
-    script(src="/socket.io/socket.io.js") 
-    script(src="/public/app.js") 
+      h1 § Welcome to Chat World §
+    main
+      div.setting
+        form.nickname-form
+          h3.dp Current Name: 
+            span.name 익명
+          input(placeholder='Your name')
+          button Save
+        form.room-form
+          input(placeholder='Room name')
+          button Enter
+
+      div.room(hidden)
+        header
+          h2.room-name
+          button.back Back
+        ul.chat-list
+        form.chat-form
+          input(placeholder='message')
+          button send
+
+    script(src="/socket.io/socket.io.js" ) 
+    script(src="/public/app.js" type="module") 
