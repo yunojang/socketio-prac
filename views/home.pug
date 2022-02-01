@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Chat & Call
+    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+  body
+    header.greeting
+      h1 Welcome to Chat
+    main.room
+      form.room-form
+        input.name(placeholder='Room name')
+        button Enter
+      ul.room-list
+    script(src="/socket.io/socket.io.js") 
+    script(src="/public/app.js") 
