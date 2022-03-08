@@ -15,8 +15,26 @@ app.get('/*', (req, res) => res.render('home'));
 const server = http.createServer(app);
 const io = socketIO(server);
 
+const getPublicRooms = () => {
+  const res = [];
+
+  const {
+    sockets: {
+      adapter: { rooms, sids }
+    }
+  } = io;
+
+  for (const key of rooms.keys()) {
+    if (!sids.has(key)) res.push(key);
+  }
+
+  return res;
+}
+
 io.on('connection', socket => {
   socket.username = '익명';
+
+  socket.emit('connection', getPublicRooms());
 
   socket.onAny(event => {
     console.log('###on Eventname : ' + event);
